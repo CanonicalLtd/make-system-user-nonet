@@ -34,6 +34,8 @@ You can run the get-signed-asserts.py script to generate this signed-asserts fil
     $ ./get-signed-asserts.py -k mykey 
     Done: signed-asserts created.
 
+Move that generated 'signed-asserts' file into canned/ 
+
 Build and run
 ------------
 
