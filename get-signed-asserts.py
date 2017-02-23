@@ -21,10 +21,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import sys
 import argparse
 import subprocess
-import crypt
-import json
-import time
-from datetime import datetime, timedelta
 import json
 from snapcraft import storeapi
 
