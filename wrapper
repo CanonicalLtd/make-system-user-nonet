@@ -1,0 +1,12 @@
+#!/bin/bash
+
+$SNAP/bin/make-system-user \
+    -authority-id 2SY9LPATpKJOdcweKhnIi7XxoNLa1wh8 \
+    -brand oXBKQ6XsXgTcTNVFH6NlFsTz7Epn2kvJ \
+    -key self-sign \
+    -model testmodel \
+    -user digit \
+    -password ubuntu \
+    -gpg-dir $SNAP_USER_DATA/keys \
+    -signed-asserts $SNAP_USER_DATA/signed-asserts \
+    2>&1 | tee $SNAP_USER_DATA/log

@@ -1,0 +1,49 @@
+name: make-system-user-nonet
+version: '1'
+summary: Make a system user file for auto import
+description: Make an auto-import.assert file
+  containing required assertions to create a system user
+
+grade: stable
+confinement: classic 
+
+apps:
+    run:
+        command: bin/wrapper
+    raw:
+        command: bin/make-system-user
+
+parts:
+    sign:
+        plugin: go
+        source: src-go
+        organize:
+            bin/repo: bin/make-system-user
+        prime:
+            - bin/make-system-user
+    hash:
+        plugin: dump
+        source: src-py
+        organize:
+            gen-hash.py: bin/gen-hash.py
+    keys:
+        plugin: dump
+        source: keys
+        organize:
+            pubring.gpg: keys/pubring.gpg
+            pubring.gpg~: keys/pubring.gpg~
+            secring.gpg: keys/secring.gpg
+            trustdb.gpg: keys/trustdb.gpg
+            random-seed: keys/random_seed
+        prime:
+            - keys
+    signed-asserts:
+        plugin: dump
+        source: canned 
+    wrapper:
+        plugin: dump
+        source: .
+        organize:
+            wrapper: bin/wrapper
+        prime:
+            - bin/wrapper
